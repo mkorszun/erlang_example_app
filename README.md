@@ -1,18 +1,35 @@
-### Hello world Erlang web app
+### Hello world Erlang web app on cloudControl
 
-To build and run:
+#### Install cctrlapp
 
-    $ rebar get-deps compile
-    $ foreman start
-    19:11:36 web.1     | started with pid 54986
-    19:11:36 web.1     | start web server on port 5000
+~~~
+$ pip install cctrl
+~~~
 
-    $ curl http://127.0.0.1:5000/
-    Hello world from Erlang.
+#### Clone repository
 
-    ^CSIGINT received
-    19:11:46 system    | terminating
-    19:11:46 system    | killing web in pid 54986
-    19:11:46 web.1     | process exiting
-    19:11:46 web.1     | process terminated
-    19:11:46 system    | terminating
+~~~bash
+$ git clone https://github.com/mkorszun/erlang_example_app.git ; cd erlang_example_app
+~~~
+
+#### Create application
+
+~~~bash
+$ cctrlapp APP_NAME create custom --buildpack https://github.com/cloudControl/buildpack-erlang-kernel.git
+~~~
+
+#### Push
+
+~~~bash
+$ cctrlapp APP_NAME/default push
+~~~
+
+#### Deploy
+
+~~~bash
+$ cctrlapp APP_NAME/default deploy
+~~~
+
+#### Test it
+
+**http://APP_NAME.cloudcontrolled.com/**
